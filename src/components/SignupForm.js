@@ -1,19 +1,18 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../utils";
+
+import { auth } from "../utils"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 export default function SignupForm() {
-
     const handleSignup = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
         const response = await createUserWithEmailAndPassword(auth, email, password)
-        .catch(error => alert(error.message))
-        console.log(response?.user)
+            .catch(error => alert(error.message))
+        console.log(response.user)    
     }
-
-  return (
-    <form onSubmit={handleSignup}>
+    return (
+        <form onSubmit={handleSignup}>
       <label htmlFor="email">
         Email:
         <input type="email" name="email" />
@@ -24,5 +23,5 @@ export default function SignupForm() {
       </label>
       <input type="submit" value="Sign Up" />
     </form>
-  );
+    )
 }
